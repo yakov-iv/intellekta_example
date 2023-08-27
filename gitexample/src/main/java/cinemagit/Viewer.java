@@ -1,18 +1,22 @@
 package cinemagit;
 
+import java.util.ArrayList;
+
 public class Viewer {
     private String nickname;
     private int age;
     private int countOfFilms;
+    private ArrayList<Cinema> cinemas;
 
     public Viewer(int age){
         this.setAge(age);
     }
 
-    public Viewer(String nickname, int age, int countOfFilms){
+    public Viewer(String nickname, int age, ArrayList<Cinema> cinemas){
         this.setNickname(nickname);
         this.setAge(age);
-        this.setCountOfFilms(countOfFilms);
+        this.setCountOfFilms();
+        this.setCinemas(cinemas);
     }
 
     private String getNickname() {
@@ -35,7 +39,15 @@ public class Viewer {
         return countOfFilms;
     }
 
-    private void setCountOfFilms(int countOfFilms) {
-        this.countOfFilms = (countOfFilms < 0) ? 0 : countOfFilms;
+    private void setCountOfFilms() {
+        this.countOfFilms = getCinemas().size();
+    }
+
+    private ArrayList<Cinema> getCinemas() {
+        return cinemas;
+    }
+
+    private void setCinemas(ArrayList<Cinema> cinemas) {
+        this.cinemas = cinemas;
     }
 }
